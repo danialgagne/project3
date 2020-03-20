@@ -1,4 +1,3 @@
-from django.test import TestCase
 import pytest
 
 from orders.models import Category, Item, Topping
