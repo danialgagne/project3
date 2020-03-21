@@ -5,7 +5,7 @@ import pytest
 class TestIndex:
     """all tests relating to the index route"""
 
-    def test_status_code(self):
+    def test_index_status_code(self):
         """index route returns status code 200"""
 
         c = Client()
@@ -18,3 +18,10 @@ class TestIndex:
         c = Client()
         response = c.get("/")
         assert 'orders/index.html' in (t.name for t in response.templates)
+
+    def test_register_redirects(self):
+        """register route redirects to index"""
+
+        c = Client()
+        response = c.get("/register")
+        assert response.status_code == 302
