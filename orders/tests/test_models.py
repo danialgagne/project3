@@ -33,7 +33,7 @@ class TestItem:
         items = Item.objects.all()
         assert items.count() == 1
 
-    def test_digits_raises(self):
+    def test_max_price_raises(self):
         """Prices with more than 5 digits should raise an error"""
 
         category = Category.objects.create(name="Pizza")
@@ -50,7 +50,7 @@ class TestTopping:
 
     def test_create_topping(self):
         """Test adding records to the Topping model"""
-        
+
         category = Category.objects.create(name="Pizza")
         t1 = Topping.objects.create(name="Pepperoni", category=category)
         t2 = Topping.objects.create(name="Sausage", category=category)
