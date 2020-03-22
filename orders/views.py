@@ -8,3 +8,6 @@ def index(request):
 
 def register(request):
     return HttpResponseRedirect(reverse("index"))
+
+def sign_in(request):
+    return HttpResponseRedirect(reverse("index"))

@@ -25,3 +25,10 @@ class TestIndex:
         c = Client()
         response = c.get("/register")
         assert response.status_code == 302
+
+    def test_sign_in_redirects(self):
+        """sign in route redirects to index"""
+
+        c = Client()
+        response = c.get("/sign_in")
+        assert response.status_code == 302
