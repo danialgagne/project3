@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect
 
 from .forms import UserCreationForm
@@ -20,4 +20,8 @@ def sign_up(request):
     return render(request, "orders/sign_up.html", context)
 
 def sign_in(request):
+    return redirect("index")
+
+def log_out(request):
+    logout(request)
     return redirect("index")

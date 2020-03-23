@@ -42,3 +42,10 @@ class TestIndex:
         c = Client()
         response = c.get("/sign_in")
         assert response.status_code == 302
+
+    def test_log_out_redirects(self):
+        """log out route redirects to index"""
+
+        c = Client()
+        response = c.get("/log_out")
+        assert response.status_code == 302
