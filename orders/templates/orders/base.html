@@ -5,7 +5,13 @@
         <title>{% block title %}{% endblock %}Pinnochio’s Pizza & Subs</title>
     </head>
     <body>
-        <nav><a href="{% url 'sign_up' %}">Sign up</a></nav>
+        <nav>
+            {% if request.user.is_authenticated %}
+                {{ request.user.username }}
+            {% else %}
+                <a href="{% url 'sign_up' %}">Sign up</a>
+            {% endif %}
+        </nav>
         {% block body %}
         {% endblock %}
     </body>
