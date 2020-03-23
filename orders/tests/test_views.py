@@ -1,5 +1,4 @@
 from django.test import Client
-import pytest
 
 
 class TestIndex:
@@ -19,12 +18,12 @@ class TestIndex:
         response = c.get("/")
         assert 'orders/index.html' in (t.name for t in response.templates)
 
-    def test_register_redirects(self):
+    def test_get_sign_up_status_code(self):
         """register route redirects to index"""
 
         c = Client()
-        response = c.get("/register")
-        assert response.status_code == 302
+        response = c.get("/sign_up")
+        assert response.status_code == 200
 
     def test_sign_in_redirects(self):
         """sign in route redirects to index"""
