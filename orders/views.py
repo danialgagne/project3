@@ -1,11 +1,14 @@
-from django.contrib.auth import login, logout
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
 from .forms import UserCreationForm
 
 
 def index(request):
-    return render(request, "orders/index.html")
+    form = AuthenticationForm()
+    context = {'form': form}
+    return render(request, "orders/index.html", context)
 
 def sign_up(request):
     if request.method == 'POST':
@@ -20,7 +23,16 @@ def sign_up(request):
     return render(request, "orders/sign_up.html", context)
 
 def sign_in(request):
-    return redirect("index")
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return redirect("index")
+    else:
+        form = AuthenticationForm()
+        context = {'form': form}
+    return render(request, "orders/index.html", context)
 
 def log_out(request):
     logout(request)

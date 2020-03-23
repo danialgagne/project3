@@ -8,6 +8,7 @@
         <nav>
             {% if request.user.is_authenticated %}
                 {{ request.user.username }}
+                <a href="{% url 'log_out' %}">Log out</a>
             {% else %}
                 <a href="{% url 'sign_up' %}">Sign up</a>
             {% endif %}
