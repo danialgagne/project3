@@ -36,13 +36,6 @@ class TestIndex:
         response = c.get("/sign_up")
         assert response.status_code == 200
 
-    def test_sign_in_redirects(self):
-        """sign in route redirects to index"""
-
-        c = Client()
-        response = c.get("/sign_in")
-        assert response.status_code == 302
-
     def test_log_out_redirects(self):
         """log out route redirects to index"""
 
