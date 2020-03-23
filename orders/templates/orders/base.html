@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>{% block title %}{% endblock %}Pinnochio’s Pizza & Subs</title>
+    </head>
+    <body>
+        <nav><a href="{% url 'sign_up' %}">Sign up</a></nav>
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

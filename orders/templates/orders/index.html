@@ -1,9 +1,5 @@
-<!DOCTYPE html>
+{% extends "orders/base.html" %}
 
-<html>
-    <head>
-    </head>
-    <body>
-        <p>Welcome</p>
-    </body>
-</html>
+{% block body %}
+    Welcome to the index page {{ request.user.username}}.
+{% endblock %}
