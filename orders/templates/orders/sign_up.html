@@ -6,7 +6,7 @@
     Welcome to the sign up page.
     <form action="{% url 'sign_up' %}" method="post">
         {% csrf_token %}
-        {{ form }}
+        {{ sign_up_form }}
         <input type="submit" value="Submit">
     </form>
 {% endblock %}

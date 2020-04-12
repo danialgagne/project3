@@ -7,7 +7,7 @@ from .models import Category
 
 
 def index(request):
-    form = AuthenticationForm()
+    sign_in_form = AuthenticationForm()
     categories = Category.objects.all()
 
     items_by_cat = []
@@ -22,7 +22,7 @@ def index(request):
         items_by_cat.append(category)
 
     context = {
-        'form': form,
+        'sign_in_form': sign_in_form,
         'categories': items_by_cat
     }
     return render(request, "orders/index.html", context)
@@ -35,8 +35,12 @@ def sign_up(request):
             login(request, user)
             return redirect("index")
     else:
-        form = UserCreationForm()
-        context = {'form': form}
+        sign_in_form = AuthenticationForm()
+        sign_up_form = UserCreationForm()
+        context = {
+            'sign_in_form': sign_in_form,
+            'sign_up_form': sign_up_form
+        }
     return render(request, "orders/sign_up.html", context)
 
 def sign_in(request):
@@ -47,8 +51,8 @@ def sign_in(request):
         login(request, user)
         return redirect("index")
     else:
-        form = AuthenticationForm()
-        context = {'form': form}
+        sign_in_form = AuthenticationForm()
+        context = {'sign_in_form': sign_in_form}
     return render(request, "orders/index.html", context)
 
 def log_out(request):
