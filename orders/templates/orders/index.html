@@ -14,11 +14,20 @@
     <h1>Menu</h1>
     {% for category in categories %}
         <h3>{{ category.name }}</h3>
-        <ul>
+        <table>
+            <tr>
+                <th></th>
+                <th>Small</th>
+                <th>Large</th>
+            </tr>
         {% for item in category.items %}
-            <li>{{ item.name }}</li>
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.small_price }}</td>
+                <td>{{ item.large_price }}</td>
+            </tr>
         {% endfor %}
-        </ul>
+        </table>
     {% endfor %}
 
 {% endblock %}

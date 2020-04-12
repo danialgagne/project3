@@ -14,7 +14,11 @@ def index(request):
     for c in categories:
         category = {'name': c.name, 'items': []}
         for item in c.items.all():
-            category['items'].append({'name': item.name})
+            category['items'].append({
+                'name': item.name,
+                'small_price': item.small_price,
+                'large_price': item.large_price
+            })
         items_by_cat.append(category)
 
     context = {
