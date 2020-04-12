@@ -1,4 +1,3 @@
-from django.test import Client
 from django.urls import resolve
 import pytest
 
@@ -13,19 +12,17 @@ class TestIndex:
         assert found.func == index
     
     @pytest.mark.django_db
-    def test_index_status_code(self):
+    def test_index_status_code(self, client):
         """index route returns status code 200"""
 
-        c = Client()
-        response = c.get("/")
+        response = client.get("/")
         assert response.status_code == 200
 
     @pytest.mark.django_db
-    def test_index_template_used(self):
+    def test_index_template_used(self, client):
         """index route uses index.html template"""
 
-        c = Client()
-        response = c.get("/")
+        response = client.get("/")
         assert 'orders/index.html' in (t.name for t in response.templates)
 
 
@@ -34,16 +31,14 @@ class TestSignUp:
         found = resolve("/sign_up")
         assert found.func == sign_up
 
-    def test_get_sign_up_status_code(self):
+    def test_get_sign_up_status_code(self, client):
         """register route redirects to index"""
 
-        c = Client()
-        response = c.get("/sign_up")
+        response = client.get("/sign_up")
         assert response.status_code == 200
 
-    def test_log_out_redirects(self):
+    def test_log_out_redirects(self, client):
         """log out route redirects to index"""
 
-        c = Client()
-        response = c.get("/log_out")
+        response = client.get("/log_out")
         assert response.status_code == 302
