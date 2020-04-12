@@ -1,8 +1,6 @@
 {% extends "orders/base.html" %}
 
 {% block body %}
-    Welcome to the index page.
-
     {% if not request.user.is_authenticated %}
         <form action="{% url 'sign_in' %}" method="post">
             {% csrf_token %}

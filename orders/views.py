@@ -16,7 +16,7 @@ def index(request):
         for item in c.items.all():
             category['items'].append({
                 'name': item.name,
-                'small_price': item.small_price,
+                'small_price': item.small_price if item.small_price else '-',
                 'large_price': item.large_price
             })
         items_by_cat.append(category)
