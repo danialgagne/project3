@@ -12,6 +12,13 @@
     {% endif %}
 
     <h1>Menu</h1>
-    {{ categories }}
+    {% for category in categories %}
+        <h3>{{ category.name }}</h3>
+        <ul>
+        {% for item in category.items %}
+            <li>{{ item.name }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
 
 {% endblock %}
