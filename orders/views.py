@@ -3,11 +3,24 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
 from .forms import UserCreationForm
+from .models import Category
 
 
 def index(request):
     form = AuthenticationForm()
-    context = {'form': form}
+    categories = Category.objects.all()
+
+    items_by_cat = []
+    for c in categories:
+        category = {'name': c.name, 'items': []}
+        for item in c.items.all():
+            category['items'].append({'name': item.name})
+        items_by_cat.append(category)
+
+    context = {
+        'form': form,
+        'categories': items_by_cat
+    }
     return render(request, "orders/index.html", context)
 
 def sign_up(request):
