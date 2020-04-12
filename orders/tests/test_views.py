@@ -1,5 +1,6 @@
 from django.test import Client
 from django.urls import resolve
+import pytest
 
 from orders.views import index, sign_up
 
@@ -11,6 +12,7 @@ class TestIndex:
         found = resolve("/")
         assert found.func == index
     
+    @pytest.mark.django_db
     def test_index_status_code(self):
         """index route returns status code 200"""
 
@@ -18,6 +20,7 @@ class TestIndex:
         response = c.get("/")
         assert response.status_code == 200
 
+    @pytest.mark.django_db
     def test_index_template_used(self):
         """index route uses index.html template"""
 
@@ -25,6 +28,8 @@ class TestIndex:
         response = c.get("/")
         assert 'orders/index.html' in (t.name for t in response.templates)
 
+
+class TestSignUp:
     def test_sign_up_resolves_to_sign_up_view(self):
         found = resolve("/sign_up")
         assert found.func == sign_up
