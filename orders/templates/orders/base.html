@@ -3,6 +3,9 @@
 <html>
     <head>
         <title>{% block title %}{% endblock %}Pinnochio’s Pizza & Subs</title>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'orders/styles.css' %}">
     </head>
     <body>
         <nav>
