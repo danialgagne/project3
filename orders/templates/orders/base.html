@@ -6,40 +6,43 @@
 
         {% load static %}
         <link rel="stylesheet" href="{% static 'orders/styles.css' %}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
     </head>
     <body>
-        <nav>
-            <ul>
-                <li class="nav-logo">
-                    <a href="{% url 'index' %}">Pinocchio's</a>
-                </li>
-                <li class="nav-primary">
-                    <a class="upper" href="{% url 'index' %}">Menu</a>
-                    <a class="upper" href="#">About</a>
-                </li>
-                {% if request.user.is_authenticated %}
-                    <li class="dropdown nav-secondary">
-                        <span class="upper">{{ request.user.username }}</span>
-                        <div class="dropdown-content">
-                            <a class="dropdown-link" href="{% url 'log_out' %}">Log out</a>
-                        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li class="nav-logo">
+                        <a href="{% url 'index' %}">Pinocchio's</a>
                     </li>
-                {% else %}
-                    <li class="dropdown nav-secondary">
-                        <span class="upper">Sign in &#10142;</span>
-                        <div class="dropdown-content">
-                            <form action="{% url 'sign_in' %}" method="post">
-                                {% csrf_token %}
-                                {{ sign_in_form }}
-                                <input type="submit" value="Submit">
-                            </form>
-                            <span>New user? <a class="dropdown-link" href="{% url 'sign_up' %}">Sign up</a></span>
-                        </div>
+                    <li class="nav-primary">
+                        <a class="upper" href="{% url 'index' %}">Menu</a>
+                        <a class="upper" href="#">About</a>
                     </li>
-                {% endif %}
-            </ul>
-        </nav>
-        {% block body %}
-        {% endblock %}
+                    {% if request.user.is_authenticated %}
+                        <li class="dropdown nav-secondary">
+                            <span class="upper">{{ request.user.username }}</span>
+                            <div class="dropdown-content">
+                                <a class="dropdown-link" href="{% url 'log_out' %}">Log out</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="dropdown nav-secondary">
+                            <span class="upper">Sign in &#10142;</span>
+                            <div class="dropdown-content">
+                                <form action="{% url 'sign_in' %}" method="post">
+                                    {% csrf_token %}
+                                    {{ sign_in_form }}
+                                    <input type="submit" value="Submit">
+                                </form>
+                                <span>New user? <a class="dropdown-link" href="{% url 'sign_up' %}">Sign up</a></span>
+                            </div>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+            {% block body %}
+            {% endblock %}
+        </div>
     </body>
 </html>
