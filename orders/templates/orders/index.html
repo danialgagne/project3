@@ -1,23 +1,24 @@
 {% extends "orders/base.html" %}
 
 {% block body %}
-    <h1>Menu</h1>
-    {% for category in categories %}
-        <h3>{{ category.name }}</h3>
-        <table>
-            <tr>
-                <th></th>
-                <th>Small</th>
-                <th>Large</th>
-            </tr>
-        {% for item in category.items %}
-            <tr>
-                <td>{{ item.name }}</td>
-                <td>{{ item.small_price }}</td>
-                <td>{{ item.large_price }}</td>
-            </tr>
+    <div class="menu-items">
+        <h1>Menu</h1>
+        {% for category in categories %}
+            <h3>{{ category.name }}</h3>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Small</th>
+                    <th>Large</th>
+                </tr>
+            {% for item in category.items %}
+                <tr>
+                    <td>{{ item.name }}</td>
+                    <td>{{ item.small_price }}</td>
+                    <td>{{ item.large_price }}</td>
+                </tr>
+            {% endfor %}
+            </table>
         {% endfor %}
-        </table>
-    {% endfor %}
-
+    </div>
 {% endblock %}
