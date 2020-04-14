@@ -10,23 +10,30 @@
     <body>
         <nav>
             <ul>
+                <li class="nav-logo">
+                    <a href="{% url 'index' %}">Pinocchio's</a>
+                </li>
+                <li class="nav-primary">
+                    <a class="upper" href="{% url 'index' %}">Menu</a>
+                    <a class="upper" href="#">About</a>
+                </li>
                 {% if request.user.is_authenticated %}
-                    <li>
-                        {{ request.user.username }}
-                    </li>
-                    <li>
-                        <a href="{% url 'log_out' %}">Log out</a>
+                    <li class="dropdown nav-secondary">
+                        <span class="upper">{{ request.user.username }}</span>
+                        <div class="dropdown-content">
+                            <a class="dropdown-link" href="{% url 'log_out' %}">Log out</a>
+                        </div>
                     </li>
                 {% else %}
-                    <li class="dropdown">
-                        Sign in &#10142;
+                    <li class="dropdown nav-secondary">
+                        <span class="upper">Sign in &#10142;</span>
                         <div class="dropdown-content">
                             <form action="{% url 'sign_in' %}" method="post">
                                 {% csrf_token %}
                                 {{ sign_in_form }}
                                 <input type="submit" value="Submit">
                             </form>
-                            <span>New user? <a href="{% url 'sign_up' %}">Sign up &#10142;</a></span>
+                            <span>New user? <a class="dropdown-link" href="{% url 'sign_up' %}">Sign up</a></span>
                         </div>
                     </li>
                 {% endif %}
