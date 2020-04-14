@@ -9,17 +9,28 @@
     </head>
     <body>
         <nav>
-            {% if request.user.is_authenticated %}
-                {{ request.user.username }}
-                <a href="{% url 'log_out' %}">Log out</a>
-            {% else %}
-                <form action="{% url 'sign_in' %}" method="post">
-                    {% csrf_token %}
-                    {{ sign_in_form }}
-                    <input type="submit" value="Submit">
-                </form>
-                <a href="{% url 'sign_up' %}">Sign up</a>
-            {% endif %}
+            <ul>
+                {% if request.user.is_authenticated %}
+                    <li>
+                        {{ request.user.username }}
+                    </li>
+                    <li>
+                        <a href="{% url 'log_out' %}">Log out</a>
+                    </li>
+                {% else %}
+                    <li class="dropdown">
+                        Sign in &#10142;
+                        <div class="dropdown-content">
+                            <form action="{% url 'sign_in' %}" method="post">
+                                {% csrf_token %}
+                                {{ sign_in_form }}
+                                <input type="submit" value="Submit">
+                            </form>
+                            <span>New user? <a href="{% url 'sign_up' %}">Sign up &#10142;</a></span>
+                        </div>
+                    </li>
+                {% endif %}
+            </ul>
         </nav>
         {% block body %}
         {% endblock %}

@@ -1,4 +1,50 @@
 body {
-    background-color: lightblue;
+    background-color: #A8A8FF;
+    /* #F8FFA8 */
     font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    background-color: #7575FF;
+    /* #A8A8FF */
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+    float: left;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(75, 75, 163);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    color: #32325d;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
