@@ -10,16 +10,8 @@
     </head>
     <body>
         <div class="menu">
-            <h1 class="title">Pinocchio's</h1>
             <nav>
                 <ul>
-                    <li class="nav-logo">
-                        <a href="{% url 'index' %}">Pinocchio's</a>
-                    </li>
-                    <li class="nav-primary">
-                        <a class="upper" href="{% url 'index' %}">Menu</a>
-                        <a class="upper" href="#">About</a>
-                    </li>
                     {% if request.user.is_authenticated %}
                         <li class="dropdown nav-secondary">
                             <span class="upper">{{ request.user.username }}</span>
@@ -29,7 +21,7 @@
                         </li>
                     {% else %}
                         <li class="dropdown nav-secondary">
-                            <span class="upper">Sign in &#10142;</span>
+                            <span class="upper">Sign in to order &#10142;</span>
                             <div class="dropdown-content">
                                 <form action="{% url 'sign_in' %}" method="post">
                                     {% csrf_token %}
@@ -42,6 +34,7 @@
                     {% endif %}
                 </ul>
             </nav>
+            <h1 class="title">Pinocchio's</h1>
             {% block body %}
             {% endblock %}
         </div>
