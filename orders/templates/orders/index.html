@@ -2,10 +2,10 @@
 
 {% block body %}
     <div class="menu-items">
-        <h1>Menu</h1>
+        <h2>Menu</h1>
         {% for category in categories %}
-            <h3>{{ category.name }}</h3>
-            <table>
+            <h3 class="menu-category">{{ category.name }}</h3>
+            <table class="menu-items-table">
                 <tr>
                     <th></th>
                     <th>Small</th>

@@ -2,6 +2,7 @@
 venv/
 __pycache__/
 .pytest_cache/
+.sass-cache/
 
 db.sqlite3
 .coverage

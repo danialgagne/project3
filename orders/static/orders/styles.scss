@@ -1,0 +1,98 @@
+$font-stack: Amatic SC;
+
+body {
+    font-family: $font-stack;
+    margin: 0;
+}
+
+nav {
+    background-color: #7575FF;
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    li {
+        display: inline;
+        font-weight: bold;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    background-color: wheat;
+}
+
+.title { 
+    text-align: center;
+    font-size: 50px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    color: #32325d;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-primary {
+    margin-left: 30px;
+}
+
+.nav-secondary {
+    float: right;
+    padding-right: 10px;
+}
+
+.nav-secondary {
+    .dropdown-content {
+        right: 0;
+    }
+}
+
+.upper {
+    text-transform: uppercase;
+}
+
+.dropdown-content {
+    a {
+        color: rgb(75, 75, 163);
+    }
+}
+
+.menu-items {
+    text-align: center;
+}
+
+.menu-items-table {
+    margin-left: auto;
+    margin-right: auto;
+}
