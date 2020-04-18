@@ -6,7 +6,18 @@
     Welcome to the sign up page.
     <form action="{% url 'sign_up' %}" method="post">
         {% csrf_token %}
-        {{ sign_up_form }}
+        {{ sign_up_form.username.label }}<br>
+        {{ sign_up_form.username }}<br>
+        {{ sign_up_form.password1.label }}<br>
+        {{ sign_up_form.password1 }}<br>
+        {{ sign_up_form.password2.label }}<br>
+        {{ sign_up_form.password2 }}<br>
+        {{ sign_up_form.email.label }}<br>
+        {{ sign_up_form.email }}<br>
+        {{ sign_up_form.first_name.label }}<br>
+        {{ sign_up_form.first_name }}<br>
+        {{ sign_up_form.last_name.label }}<br>
+        {{ sign_up_form.last_name }}<br>
         <input type="submit" value="Submit">
     </form>
 {% endblock %}
