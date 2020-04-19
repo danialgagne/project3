@@ -13,7 +13,7 @@
                 <th>Large</th>
             </tr>
             {% for item in category.items %}
-            <tr>
+            <tr data-id="{{ item.id }}" data-name="{{ item.name }}" data-category="{{ category.name }}">
                 <td>{{ item.name }}</td>
                 {% if request.user.is_authenticated %}
                 
@@ -21,13 +21,13 @@
                 <td>{{ item.small_price }}</td>
                 {% else %}
                 <td>
-                    <button class="btn-secondary">
+                    <button class="btn-secondary item" data-size="small">
                         {{ item.small_price }}
                     </button>
                 </td>
                 {% endif %}
                 <td>
-                    <button class="btn-secondary">
+                    <button class="btn-secondary item">
                         {{ item.large_price }}
                     </button>
                 </td>
