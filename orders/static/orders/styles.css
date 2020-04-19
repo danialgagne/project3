@@ -22,6 +22,13 @@ ul {
   margin: 0;
   padding: 0; }
 
+input {
+  font-size: 1.25em;
+  font-family: Amatic SC;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 1% 2%; }
+
 .menu {
   position: absolute;
   width: 50%;
@@ -89,5 +96,13 @@ ul {
   margin: 1%;
   font-weight: bold;
   font-size: 1.5em; }
+
+.btn-primary {
+  border: none;
+  color: white;
+  background-color: #4b4ba3;
+  font-family: Amatic SC;
+  font-size: 1.5em;
+  margin-top: 3%; }
 
 /*# sourceMappingURL=styles.css.map */

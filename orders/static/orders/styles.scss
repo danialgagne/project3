@@ -32,6 +32,14 @@ ul {
     padding: 0;
 }
 
+input {
+    font-size: 1.25em;
+    font-family: $font-stack;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1% 2%;
+}
+
 .menu {
     position: absolute;
     width: 50%;
@@ -117,4 +125,13 @@ ul {
     margin: 1%;
     font-weight: bold;
     font-size: 1.5em;
+}
+
+.btn-primary {
+    border: none;
+    color: white;
+    background-color: rgb(75, 75, 163);
+    font-family: $font-stack;
+    font-size: 1.5em;
+    margin-top: 3%;
 }
