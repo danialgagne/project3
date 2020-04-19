@@ -3,35 +3,41 @@
 {% block body %}
     <section class="main-content">
         <h2 class="nav-primary">Menu</h1>
+
         {% for category in categories %}
-            <h3 class="menu-category">{{ category.name }}</h3>
-            <table class="menu-items-table">
-                <tr>
-                    <th></th>
-                    <th>Small</th>
-                    <th>Large</th>
-                </tr>
+        <h3 class="menu-category">{{ category.name }}</h3>
+        <table class="menu-items-table">
+            <tr>
+                <th></th>
+                <th>Small</th>
+                <th>Large</th>
+            </tr>
             {% for item in category.items %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    {% if request.user.is_authenticated %}
-                        <td>
-                            <button class="btn-secondary">
-                                {{ item.small_price }}
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn-secondary">
-                                {{ item.large_price }}
-                            </button>
-                        </td>
-                    {% else %}
-                        <td>{{ item.small_price }}</td>
-                        <td>{{ item.large_price }}</td>
-                    {% endif %}
-                </tr>
+            <tr>
+                <td>{{ item.name }}</td>
+                {% if request.user.is_authenticated %}
+                
+                {% if item.small_price == '-' %}
+                <td>{{ item.small_price }}</td>
+                {% else %}
+                <td>
+                    <button class="btn-secondary">
+                        {{ item.small_price }}
+                    </button>
+                </td>
+                {% endif %}
+                <td>
+                    <button class="btn-secondary">
+                        {{ item.large_price }}
+                    </button>
+                </td>
+                {% else %}
+                <td>{{ item.small_price }}</td>
+                <td>{{ item.large_price }}</td>
+                {% endif %}
+            </tr>
             {% endfor %}
-            </table>
+        </table>
         {% endfor %}
         </section>
 {% endblock %}
