@@ -27,8 +27,14 @@
                             <div class="dropdown-content">
                                 <form action="{% url 'sign_in' %}" method="post">
                                     {% csrf_token %}
-                                    {{ sign_in_form }}
-                                    <input type="submit" value="Submit">
+                                    {% for field in sign_in_form %}
+                                        <div class="form-item">
+                                            <label>{{field.label }}</label>
+                                            <br>
+                                            {{ field }}
+                                        </div>
+                                    {% endfor %}
+                                    <button type="submit">Sign In</button>
                                 </form>
                                 <span>New user? <a class="dropdown-link" href="{% url 'sign_up' %}">Sign up</a></span>
                             </div>
