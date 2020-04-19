@@ -30,11 +30,14 @@ ul {
   background-color: wheat;
   box-shadow: 5px 10px 18px #888888;
   margin-bottom: 2%;
-  margin-top: 2%; }
+  margin-top: 2%;
+  padding-bottom: 1%; }
 
 .title {
   text-align: center;
   font-size: 3.5em; }
+  .title a {
+    color: black; }
 
 .dropdown {
   position: relative;
@@ -64,13 +67,10 @@ ul {
 .nav-secondary .dropdown-content {
   right: 0; }
 
-.upper {
-  text-transform: uppercase; }
-
 .dropdown-content a {
   color: #4b4ba3; }
 
-.menu-items {
+.main-content {
   text-align: center; }
 
 .menu-category {
@@ -79,6 +79,11 @@ ul {
 .menu-items-table {
   margin-left: auto;
   margin-right: auto;
+  font-size: 1.5em; }
+
+.form-item {
+  margin: 1%;
+  font-weight: bold;
   font-size: 1.5em; }
 
 /*# sourceMappingURL=styles.css.map */

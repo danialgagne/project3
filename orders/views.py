@@ -34,13 +34,13 @@ def sign_up(request):
             user = form.save()
             login(request, user)
             return redirect("index")
-    else:
-        sign_in_form = AuthenticationForm()
-        sign_up_form = UserCreationForm()
-        context = {
-            'sign_in_form': sign_in_form,
-            'sign_up_form': sign_up_form
-        }
+        
+    sign_in_form = AuthenticationForm()
+    sign_up_form = UserCreationForm(auto_id="sign_up_%s")
+    context = {
+        'sign_in_form': sign_in_form,
+        'sign_up_form': sign_up_form
+    }
     return render(request, "orders/sign_up.html", context)
 
 def sign_in(request):

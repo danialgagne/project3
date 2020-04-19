@@ -4,10 +4,11 @@
     <head>
         <title>{% block title %}{% endblock %}Pinnochio’s Pizza & Subs</title>
 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+
         {% load static %}
         <link rel="shortcut icon" type="image/png" href="{% static 'orders/favicon.ico' %}"/>
         <link rel="stylesheet" href="{% static 'orders/styles.css' %}">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
     </head>
     <body>
         <div class="menu">
@@ -15,14 +16,14 @@
                 <ul>
                     {% if request.user.is_authenticated %}
                         <li class="dropdown nav-secondary">
-                            <span class="upper">{{ request.user.username }}</span>
+                            <span>{{ request.user.username }} &#8744;</span>
                             <div class="dropdown-content">
                                 <a class="dropdown-link" href="{% url 'log_out' %}">Log out</a>
                             </div>
                         </li>
                     {% else %}
                         <li class="dropdown nav-secondary">
-                            <span class="upper">Sign in to order &#10142;</span>
+                            <span>Sign in to order &#10142;</span>
                             <div class="dropdown-content">
                                 <form action="{% url 'sign_in' %}" method="post">
                                     {% csrf_token %}
@@ -35,7 +36,7 @@
                     {% endif %}
                 </ul>
             </nav>
-            <h1 class="title">Pinocchio's</h1>
+            <h1 class="title"><a href="{% url 'index' %}">Pinocchio's</a></h1>
             {% block body %}
             {% endblock %}
         </div>
