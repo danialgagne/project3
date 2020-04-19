@@ -15,30 +15,30 @@
             <nav>
                 <ul>
                     {% if request.user.is_authenticated %}
-                        <li class="dropdown nav-secondary">
-                            <span>{{ request.user.username }} &#8744;</span>
-                            <div class="dropdown-content">
-                                <a class="dropdown-link" href="{% url 'log_out' %}">Log out</a>
-                            </div>
-                        </li>
+                    <li class="dropdown nav-secondary">
+                        <span>{{ request.user.username }} &#8744;</span>
+                        <div class="dropdown-content">
+                            <a class="dropdown-link" href="{% url 'log_out' %}">Log out</a>
+                        </div>
+                    </li>
                     {% else %}
-                        <li class="dropdown nav-secondary">
-                            <span>Sign in to order &#10142;</span>
-                            <div class="dropdown-content">
-                                <form action="{% url 'sign_in' %}" method="post">
-                                    {% csrf_token %}
-                                    {% for field in sign_in_form %}
-                                        <div class="form-item">
-                                            <label>{{field.label }}</label>
-                                            <br>
-                                            {{ field }}
-                                        </div>
-                                    {% endfor %}
-                                    <button class="btn-primary" type="submit">Sign In</button>
-                                </form>
-                                <span>New user? <a class="dropdown-link" href="{% url 'sign_up' %}">Sign up</a></span>
-                            </div>
-                        </li>
+                    <li class="dropdown nav-secondary">
+                        <span>Sign in to order &#10142;</span>
+                        <div class="dropdown-content">
+                            <form action="{% url 'sign_in' %}" method="post">
+                                {% csrf_token %}
+                                {% for field in sign_in_form %}
+                                <div class="form-item">
+                                    <label>{{field.label }}</label>
+                                    <br>
+                                    {{ field }}
+                                </div>
+                                {% endfor %}
+                                <button class="btn-primary" type="submit">Sign In</button>
+                            </form>
+                            <span>New user? <a class="dropdown-link" href="{% url 'sign_up' %}">Sign up</a></span>
+                        </div>
+                    </li>
                     {% endif %}
                 </ul>
             </nav>
