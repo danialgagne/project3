@@ -121,6 +121,14 @@ input {
     font-size: 1.5em;
 }
 
+.form-fields {
+    max-width: fit-content;
+    position: relative;
+    text-align: left;
+    left: 50%;
+    transform: translate(-50%);
+}
+
 .form-item {
     margin: 1%;
     font-weight: bold;

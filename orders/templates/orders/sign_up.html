@@ -3,18 +3,20 @@
 {% block title %}Sign Up - {% endblock %}
 
 {% block body %}
-    <div class="main-content">
+    <section class="main-content">
         <h2 class="nav-primary">Sign Up</h2>
         <form action="{% url 'sign_up' %}" method="post">
             {% csrf_token %}
-            {% for field in sign_up_form %}
-                <div class="form-item">
-                    <label>{{field.label }}</label>
-                    <br>
-                    {{ field }}
-                </div>
-            {% endfor %}
+            <div class="form-fields">
+                {% for field in sign_up_form %}
+                    <div class="form-item">
+                        <label>{{field.label }}</label>
+                        <br>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+            </div>
             <button class="btn-primary" type="submit">Sign Up</button>
         </form>
-    </div>
+    </section>
 {% endblock %}
