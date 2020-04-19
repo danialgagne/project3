@@ -135,11 +135,24 @@ input {
     font-size: 1.5em;
 }
 
-.btn-primary {
-    border: none;
-    color: white;
-    background-color: rgb(75, 75, 163);
+%btn {
+    border-radius: 15%;
     font-family: $font-stack;
     font-size: 1.5em;
     margin-top: 3%;
+    cursor: pointer;
+}
+
+.btn-primary {
+    @extend %btn;
+    border: none;
+    color: white;
+    background-color: rgb(75, 75, 163);
+}
+
+.btn-secondary {
+    @extend %btn;
+    border-color: rgb(75, 75, 163);
+    color:  rgb(75, 75, 163);
+    background-color: white;
 }

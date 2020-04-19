@@ -104,12 +104,21 @@ input {
   font-weight: bold;
   font-size: 1.5em; }
 
+.btn-primary, .btn-secondary {
+  border-radius: 15%;
+  font-family: Amatic SC;
+  font-size: 1.5em;
+  margin-top: 3%;
+  cursor: pointer; }
+
 .btn-primary {
   border: none;
   color: white;
-  background-color: #4b4ba3;
-  font-family: Amatic SC;
-  font-size: 1.5em;
-  margin-top: 3%; }
+  background-color: #4b4ba3; }
+
+.btn-secondary {
+  border-color: #4b4ba3;
+  color: #4b4ba3;
+  background-color: white; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -14,8 +14,21 @@
             {% for item in category.items %}
                 <tr>
                     <td>{{ item.name }}</td>
-                    <td>{{ item.small_price }}</td>
-                    <td>{{ item.large_price }}</td>
+                    {% if request.user.is_authenticated %}
+                        <td>
+                            <button class="btn-secondary">
+                                {{ item.small_price }}
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn-secondary">
+                                {{ item.large_price }}
+                            </button>
+                        </td>
+                    {% else %}
+                        <td>{{ item.small_price }}</td>
+                        <td>{{ item.large_price }}</td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </table>
