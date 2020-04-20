@@ -7,14 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const reset = ['Log out', 'Sign in', 'Sign up']
 
         if (element.classList.contains('item')) {
-            const row = element.closest('tr');
-            let item = {
-                'id': row.dataset.id,
-                'name': row.dataset.name,
-                'category': row.dataset.category,
-                'size': element.dataset.size,
-                'price': element.innerText
-            };
+            const item = create_cart_item(element)
             cart.push(item);
             localStorage.setItem('cart', JSON.stringify(cart));
         }
@@ -25,3 +18,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })  
 })
+
+function create_cart_item (el) {
+    const row = el.closest('tr');
+    let item = {
+        'id': row.dataset.id,
+        'name': row.dataset.name,
+        'category': row.dataset.category,
+        'size': el.dataset.size,
+        'price': el.innerText
+    };
+    return item
+}
