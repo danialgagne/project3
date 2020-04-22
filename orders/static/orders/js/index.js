@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (cart.length > 0) {
         document.getElementById('cart-icon').style.display = 'initial';
+        cart.forEach(add_cart_item);
     }
 
     document.addEventListener('click', event => {
