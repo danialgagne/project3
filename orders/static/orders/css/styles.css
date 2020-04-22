@@ -130,8 +130,9 @@ input {
   overflow-x: hidden;
   right: 0; }
 
-.cart-icon {
+#cart-icon {
   cursor: pointer;
-  margin: 5px; }
+  margin: 5px;
+  display: none; }
 
 /*# sourceMappingURL=styles.css.map */

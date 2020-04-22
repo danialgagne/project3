@@ -4,7 +4,7 @@
     <head>
         <title>{% block title %}{% endblock %}Pinnochio’s Pizza & Subs</title>
 
-        <script src="https://kit.fontawesome.com/2d07834bf2.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
 
         {% load static %}
@@ -18,7 +18,7 @@
             <nav>
                 <ul>
                     <li>
-                        <i id="cart-icon" class="fas fa-shopping-cart fa-2x cart-icon"></i>
+                        <span id="cart-icon" class="material-icons">shopping_cart</span>
                     </li>
                     {% if request.user.is_authenticated %}
                     <li class="dropdown nav-secondary">

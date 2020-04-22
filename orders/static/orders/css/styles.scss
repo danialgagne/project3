@@ -167,7 +167,8 @@ input {
     right: 0;
 }
 
-.cart-icon {
+#cart-icon {
     cursor: pointer;
     margin: 5px;
+    display: none;
 }
