@@ -6,6 +6,13 @@
 
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic+SC">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+        <script id="cart-item" type="text/x-handlebars-template">
+            {% verbatim %}
+            <p data-id="{{id}}">{{size}} {{name}} {{category}}: {{price}}</p>
+            {% endverbatim %}
+        </script>
 
         {% load static %}
         <link rel="shortcut icon" type="image/png" href="{% static 'orders/favicon.ico' %}"/>
@@ -22,7 +29,8 @@
                     </li>
                     {% if request.user.is_authenticated %}
                     <li class="dropdown nav-secondary">
-                        <span>{{ request.user.username }} &#8744;</span>
+                        <span>{{ request.user.username }}</span>
+                        <span class="material-icons">keyboard_arrow_down</span>
                         <div class="dropdown-content">
                             <a class="dropdown-link" href="{% url 'log_out' %}">Log out</a>
                         </div>
