@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', event => {
         const element = event.target;
-        const reset = ['Log out', 'Sign in', 'Sign up']
 
         if (element.classList.contains('item')) {
             const item = create_cart_item(element)
@@ -12,11 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('cart', JSON.stringify(cart));
         }
 
+        const reset = ['Log out', 'Sign in', 'Sign up']
         if (reset.includes(element.textContent)) {
             cart = []
             localStorage.clear()
         }
-    })  
+
+        if (element.id == 'cart-icon') {toggle_cart()}
+    })
 })
 
 function create_cart_item (el) {
@@ -29,4 +31,11 @@ function create_cart_item (el) {
         'price': el.innerText
     };
     return item
+}
+
+function toggle_cart () {
+    // document.getElementById('shopping-cart').style.width = '20em'
+    document.getElementById('shopping-cart').style.width == '' ?
+        document.getElementById('shopping-cart').style.width = '20em' :
+        document.getElementById('shopping-cart').style.width = ''
 }

@@ -121,11 +121,17 @@ input {
   color: #4b4ba3;
   background-color: white; }
 
-#shopping-cart {
+.shopping-cart {
   position: fixed;
-  bottom: 0;
-  height: 8%;
-  background-color: blue;
-  width: 100%; }
+  height: 100%;
+  background-color: white;
+  width: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  right: 0; }
+
+.cart-icon {
+  cursor: pointer;
+  margin: 5px; }
 
 /*# sourceMappingURL=styles.css.map */
