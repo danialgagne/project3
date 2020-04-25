@@ -45,16 +45,19 @@ def sign_up(request):
     return render(request, "orders/sign_up.html", context)
 
 def sign_in(request):
-    username = request.POST['username']
-    password = request.POST['password']
-    user = authenticate(request, username=username, password=password)
-    if user is not None:
-        login(request, user)
-        return redirect("index")
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect("index")
+        else:
+            sign_in_form = AuthenticationForm()
+            context = {'sign_in_form': sign_in_form}
+        return render(request, "orders/index.html", context)
     else:
-        sign_in_form = AuthenticationForm()
-        context = {'sign_in_form': sign_in_form}
-    return render(request, "orders/index.html", context)
+        return redirect('index')
 
 def log_out(request):
     logout(request)
