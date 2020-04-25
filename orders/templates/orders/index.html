@@ -13,7 +13,7 @@
                 <th>Large</th>
             </tr>
             {% for item in category.items %}
-            <tr data-id="{{ item.id }}" data-name="{{ item.name }}" data-category="{{ category.name }}">
+            <tr data-id="{{ item.id }}" data-name="{{ item.name }}" data-category="{{ category.name }}"  data-toppings="{{ item.toppings_allowed }}">
                 <td>{{ item.name }}</td>
                 {% if request.user.is_authenticated %}
                 
