@@ -5,7 +5,7 @@
         <h2 class="nav-primary">Menu</h1>
 
         {% for category in categories %}
-        <h3 class="menu-category">{{ category.name }}</h3>
+        <h3 class="menu-category" data-toppings="{{ category.toppings }}">{{ category.name }}</h3>
         <table class="menu-items-table">
             <tr>
                 <th></th>
@@ -17,8 +17,8 @@
                 <td>{{ item.name }}</td>
                 {% if request.user.is_authenticated %}
                 
-                {% if item.small_price == '-' %}
-                <td>{{ item.small_price }}</td>
+                {% if not item.small_price %}
+                <td>&ndash;</td>
                 {% else %}
                 <td>
                     <button class="btn-secondary item" data-size="small">
@@ -26,6 +26,7 @@
                     </button>
                 </td>
                 {% endif %}
+                
                 <td>
                     <button class="btn-secondary item" data-size="large">
                         {{ item.large_price }}

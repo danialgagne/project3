@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 
 from .forms import UserCreationForm
-from .models import Category, Topping
+from .models import Category
 
 
 def index(request):
@@ -12,23 +12,18 @@ def index(request):
 
     items_by_cat = []
     for c in categories:
-        category = {'name': c.name, 'items': []}
-        for item in c.items.all():
-            category['items'].append({
-                'id': item.id,
-                'name': item.name,
-                'small_price': item.small_price if item.small_price else '-',
-                'large_price': item.large_price,
-                'toppings_allowed': item.toppings_allowed
-            })
+        category = {
+            'id': c.id,
+            'name': c.name,
+            'items': c.items.all(),
+            'toppings': [{'id': topping.id, 'name': topping.name} for topping in c.toppings.all()]
+        }
+        
         items_by_cat.append(category)
-    
-    toppings = Topping.objects.all()
 
     context = {
         'sign_in_form': sign_in_form,
-        'categories': items_by_cat,
-        'toppings': toppings
+        'categories': items_by_cat
     }
     return render(request, "orders/index.html", context)
 
