@@ -1,6 +1,7 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
+import json
 
 from .forms import UserCreationForm
 from .models import Category
@@ -12,11 +13,12 @@ def index(request):
 
     items_by_cat = []
     for c in categories:
+        t = [{'id': topping.id, 'name': topping.name} for topping in c.toppings.all()]
         category = {
             'id': c.id,
             'name': c.name,
             'items': c.items.all(),
-            'toppings': [{'id': topping.id, 'name': topping.name} for topping in c.toppings.all()]
+            'toppings': json.dumps(t)
         }
         
         items_by_cat.append(category)
