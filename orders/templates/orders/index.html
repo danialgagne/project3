@@ -5,7 +5,7 @@
         <h2 class="nav-primary">Menu</h1>
 
         {% for category in categories %}
-        <h3 class="menu-category" data-toppings="{{ category.toppings }}">{{ category.name }}</h3>
+        <h3 id="{{ category.name }}" class="menu-category" data-toppings="{{ category.toppings }}">{{ category.name }}</h3>
         <table class="menu-items-table">
             <tr>
                 <th></th>

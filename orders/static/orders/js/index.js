@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (element.classList.contains('item')) {
             if (element.closest('tr').dataset.toppings == "True" ) {
                 modal.style.display = 'block';
+                add_toppings();
             }
             const item = create_cart_item(element);
             cart.push(item);
@@ -59,6 +60,9 @@ function add_cart_item(contents) {
     document.getElementById('shopping-cart').innerHTML += item
 }
 
-function add_toppings(toppings, quantity) {
+const topping_modal_template = Handlebars.compile(document.getElementById('topping-select').innerHTML);
 
+function add_toppings() {
+    const toppings = topping_modal_template()
+    document.getElementById('toppings-modal-content').innerHTML = toppings
 }

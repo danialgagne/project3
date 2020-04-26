@@ -14,6 +14,12 @@
             {% endverbatim %}
         </script>
 
+        <script id="topping-select" type="text/x-handlebars-template">
+            {% verbatim %}
+            <h3 class="menu-category">Add Toppings</h3>
+            {% endverbatim %}
+        </script>
+
         {% load static %}
         <link rel="shortcut icon" type="image/png" href="{% static 'orders/favicon.ico' %}"/>
         <link rel="stylesheet" href="{% static 'orders/css/styles.css' %}">
@@ -62,8 +68,7 @@
         </div>
         <section id="shopping-cart" class="shopping-cart"></section>
         <div id="toppings-modal" class="modal">
-            <div class="modal-content">
-                <h3 class="menu-category">Add Toppings</h3>
+            <div id="toppings-modal-content" class="modal-content">
             </div>
         </div>
     </body>
