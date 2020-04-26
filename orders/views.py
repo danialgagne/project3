@@ -54,7 +54,7 @@ def sign_in(request):
         else:
             sign_in_form = AuthenticationForm()
             context = {'sign_in_form': sign_in_form}
-        return render(request, "orders/index.html", context)
+            return render(request, "orders/index.html", context)
     else:
         return redirect('index')
 

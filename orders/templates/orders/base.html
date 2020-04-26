@@ -17,6 +17,13 @@
         <script id="topping-select" type="text/x-handlebars-template">
             {% verbatim %}
             <h3 class="menu-category">Add Toppings</h3>
+            {{#each topping}}
+            <select id="{{this.name}}">
+                {{#each toppings}}
+                <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+            {{/each}}
             {% endverbatim %}
         </script>
 

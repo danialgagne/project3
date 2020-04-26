@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     let cart = localStorage.getItem('cart') ?
         JSON.parse(localStorage.getItem('cart')) : []
-    
+
     if (cart.length > 0) {
         document.getElementById('cart-icon').style.display = 'initial';
         cart.forEach(add_cart_item);
@@ -12,9 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const modal = document.getElementById('toppings-modal');
 
         if (element.classList.contains('item')) {
-            if (element.closest('tr').dataset.toppings == "True" ) {
+            const row = element.closest('tr')
+            if (row.dataset.toppings == "True") {
                 modal.style.display = 'block';
-                add_toppings();
+                const topping_quantities = {
+                    '1 Topping': 1,
+                    '2 Toppings': 2,
+                    '3 Toppings': 3
+                }
+                const quantity = topping_quantities[row.dataset.name]
+                add_toppings(quantity);
             }
             const item = create_cart_item(element);
             cart.push(item);
@@ -29,12 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.clear();
         }
 
-        if (element.id == 'cart-icon') {toggle_cart()}
-        if (element == modal) {modal.style.display = 'none'}
+        if (element.id == 'cart-icon') { toggle_cart() }
+        if (element == modal) { modal.style.display = 'none' }
     })
 })
 
-function create_cart_item (el) {
+function create_cart_item(el) {
     const row = el.closest('tr');
     let item = {
         'id': row.dataset.id,
@@ -46,7 +53,7 @@ function create_cart_item (el) {
     return item
 }
 
-function toggle_cart () {
+function toggle_cart() {
     // document.getElementById('shopping-cart').style.width = '20em'
     document.getElementById('shopping-cart').style.width == '' ?
         document.getElementById('shopping-cart').style.width = '20em' :
@@ -62,7 +69,15 @@ function add_cart_item(contents) {
 
 const topping_modal_template = Handlebars.compile(document.getElementById('topping-select').innerHTML);
 
-function add_toppings() {
-    const toppings = topping_modal_template()
+function add_toppings(qty) {
+    const content = { 'topping': [] }
+    for (let i = 1; i <= qty; i++) {
+        const selector = {
+            'name': 'topping' + i,
+            'toppings': ['pep', 'mush', 'bac']
+        }
+        content.topping.push(selector)
+    }
+    const toppings = topping_modal_template(content)
     document.getElementById('toppings-modal-content').innerHTML = toppings
 }
