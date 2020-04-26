@@ -18,7 +18,8 @@
             {% verbatim %}
             <h3 class="menu-category">Add Toppings</h3>
             {{#each topping}}
-            <select id="{{this.name}}">
+            <h3 class="menu-category">{{this.name}}</h3>
+            <select id="{{this.id}}">
                 {{#each toppings}}
                 <option value="{{this}}">{{this}}</option>
                 {{/each}}

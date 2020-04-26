@@ -73,7 +73,8 @@ function add_toppings(qty) {
     const content = { 'topping': [] }
     for (let i = 1; i <= qty; i++) {
         const selector = {
-            'name': 'topping' + i,
+            'id': 'topping' + i,
+            'name': 'Topping ' + i,
             'toppings': ['pep', 'mush', 'bac']
         }
         content.topping.push(selector)
