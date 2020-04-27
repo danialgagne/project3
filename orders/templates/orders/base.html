@@ -20,6 +20,7 @@
             {{#each topping}}
             <h3 class="menu-category">{{this.name}}</h3>
             <select id="{{this.id}}">
+                <option value="default">Select One</option>
                 {{#each toppings}}
                 <option value="{{this.id}}">{{this.name}}</option>
                 {{/each}}
