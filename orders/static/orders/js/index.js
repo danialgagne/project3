@@ -20,8 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     '2 Toppings': 2,
                     '3 Toppings': 3
                 }
-                const quantity = topping_quantities[row.dataset.name]
-                add_toppings(quantity);
+                const quantity = topping_quantities[row.dataset.name] ?
+                    topping_quantities[row.dataset.name] : 4
+
+                const c = document.getElementById(row.dataset.category)
+                add_toppings(c.dataset.toppings, quantity);
             }
             const item = create_cart_item(element);
             cart.push(item);
@@ -69,16 +72,16 @@ function add_cart_item(contents) {
 
 const topping_modal_template = Handlebars.compile(document.getElementById('topping-select').innerHTML);
 
-function add_toppings(qty) {
+function add_toppings(toppings, qty) {
     const content = { 'topping': [] }
     for (let i = 1; i <= qty; i++) {
         const selector = {
             'id': 'topping' + i,
             'name': 'Topping ' + i,
-            'toppings': ['pep', 'mush', 'bac']
+            'toppings': JSON.parse(toppings)
         }
         content.topping.push(selector)
     }
-    const toppings = topping_modal_template(content)
-    document.getElementById('toppings-modal-content').innerHTML = toppings
+    const toppings_selector = topping_modal_template(content)
+    document.getElementById('toppings-modal-content').innerHTML = toppings_selector
 }
